@@ -1,4 +1,5 @@
 import { Layout, Menu, MenuProps, theme } from "antd"
+import { Outlet } from "react-router-dom";
 
 
 const { Header, Sider, Content,Footer } = Layout;
@@ -57,7 +58,8 @@ function MainLayout() {
               borderRadius: borderRadiusLG,
             }}
           >
-            content
+            {/*  relative components render in this area  */}
+            <Outlet></Outlet>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
