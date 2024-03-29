@@ -1,29 +1,12 @@
 import { Layout, Menu,  theme } from "antd"
 import { Outlet } from "react-router-dom";
-import { adminSidebarItems } from "../../routes/admin.routes";
+import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
+import { adminPaths } from "../../routes/admin.routes";
+
 
 
 const { Header, Sider, Content,Footer } = Layout;
 
-
-// const items: MenuProps['items'] = [
-//   { 
-//     key: 'Dashboard',
-//     label: <NavLink to='/admin/dashboard'>Dashboard</NavLink>
-//   },
-//   {                      //this Link control from admin.routes with utils oparation                  
-//     key: 'Create Admin',
-//     label: <NavLink to="/admin/create-admin">Create Admin</NavLink>
-//   },
-//   {
-//     key: 'Create Student',
-//     label: <NavLink to="/admin/create-student">Create Student</NavLink>
-//   },
-//   {
-//     key: 'Create Faculty',
-//     label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>
-//   },
-// ]
 
 function MainLayout() {
 
@@ -46,7 +29,7 @@ function MainLayout() {
         <div style={{color: "white", textAlign: "center", height:"4rem", display:"flex", justifyContent:"center", alignItems:"center"}}>
           <h1>PH University</h1>
         </div>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={adminSidebarItems} />
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItemsGenerator(adminPaths, "admin")} />
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }} />
