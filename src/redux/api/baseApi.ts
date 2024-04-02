@@ -5,7 +5,7 @@ const baseQuery = fetchBaseQuery({
      baseUrl: 'http://localhost:5000/api/v1',
      credentials: 'include', 
      prepareHeaders: (headers, {getState}) =>{
-          const token = (getState() as RootState).auth.token;
+          const token = (getState() as RootState).auth.token; //send token for authorization
           if(token){
                headers.set('authorization', `${token}`)
           }
@@ -13,8 +13,13 @@ const baseQuery = fetchBaseQuery({
      }
 })
 
+const baseQueryWithRefreshToken = async(args, api, extraOptions) =>{
+      const result = await baseQuery(args, api, extraOptions);
+      console.log(result);
+}
+
 export const baseApi = createApi({
      reducerPath: "baseApi",
-     baseQuery: baseQuery, //it's important for get cookie //and also set in backend cors({credentials: true})
+     baseQuery: baseQueryWithRefreshToken, //it's important for get cookie //and also set in backend cors({credentials: true})
      endpoints: () => ({}),
 });
