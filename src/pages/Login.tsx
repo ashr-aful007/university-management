@@ -12,7 +12,7 @@ function Login() {
   const navigate = useNavigate()
    const dispatch = useAppDispatch()
    const {register, handleSubmit} = useForm()
-   const [login, {error}] = useLoginMutation()
+   const [login,] = useLoginMutation()
 
         const onSubmit = async(data: FieldValues) =>{
           
